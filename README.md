@@ -24,4 +24,4 @@ Other Parameters:
 Roles:
 	- Nick M: Start writing up technical report
 	- Nick T: Create class for Nodes
-  - Sybille: Create function for Dijkstra's shortest path
+	- Sybille: Create function for Dijkstra's shortest path
