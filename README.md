@@ -11,7 +11,8 @@ Novel ideas:
 Error Handling:
 	- Check probability of failing, avoid nodes that fail more often than others. 
 		○ Show graph to compare the error handling with just going through nodes that have crashed
-
+Class Application:
+	- DSR
 Node Class:
 	- Neighbors
 	- Probability of it failing: random number generator if within number range then failed
