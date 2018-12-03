@@ -58,20 +58,24 @@ class node:
         node.neighborID.append(test)
 
 
-node_file = open('nodes.txt', 'r')
+node_file = open('nodes.txt', 'r') #open network data file
 lines = node_file.readlines()
-#print(lines[0])
 node_list = []
 new_node = []
-for i in range(3):
-    clean_line = lines[i].rstrip()
-    string = clean_line.split(':')
-    #print(string[1])
-    new_node.append(string[1])
+offset = 0
+while offset < len(lines):
+    for j in range(3):
+        clean_line = lines[j+offset].rstrip() #remove new line character from string
+        string = clean_line.split(':')
+        new_node.append(string[1])
+    
+    temp_node = node(new_node[0],False,True,False,new_node[1],new_node[2])
+    print("printing id: ",temp_node.getID())
+    print(new_node)
+    new_node.clear()
+    offset += 3
 
-print(new_node)
-temp_node = node(new_node[0],False,True,False,new_node[1],new_node[2])
-print("printing id: ",temp_node.getID())
+
 #node_list.append(temp_node)
 #print(node_list)
 node_file.close()
