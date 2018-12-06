@@ -105,25 +105,22 @@ Important Notes:
     Function to find the shortest path between two given nodes. 
 """
 def shortestPath(start_node, dest_node, edge_matrix):
-    print("srcnode: ",start_node," destnode: ",dest_node)
-    visited = []
     distances = [np.inf] * num_nodes #holds the shortest distances from start_node to dest_node
     path = [False] * num_nodes  #holds nodes that are part of shortest path
     distances[start_node] = 0 # set distance from source node as 0
     current_node = start_node
 
-    while current_node != dest_node:
+    for i in range(num_nodes):
         
         min_node = minDistance(distances, path)
         current_node = min_node
         path[min_node] = True
+
         for j in range(num_nodes):
             if edge_matrix[min_node][j] > 0 and path[j] == False and distances[j] > distances[min_node] + edge_matrix[min_node][j]:
                 distances[j] = distances[min_node] + edge_matrix[min_node][j]
-                visited.append(j)
     
-    print('visited: ',visited)
-    return distances
+    return distances[dest_node]
 """
 Function Name: checkPaths
 Parameters: edge_matrix, node_list
@@ -161,8 +158,6 @@ while offset < len(lines):
     
     temp_node = node(new_node[0],False,True,new_node[1],new_node[2])
     node_list.append(temp_node)
-    print("printing id: ",temp_node.getID())
-    print(new_node)
     new_node.clear()
     offset += 3
 
@@ -199,8 +194,8 @@ failNum = random.random() * 100
 
 updated_matrix = [[]]
 updated_matrix = checkPaths(edge_matrix,node_list)
-print(updated_matrix)
 
-print("distances: ",shortestPath(node_list[sourceNode-1].getID()-1,node_list[destNode-1].getID()-1,edge_matrix))
+print("The shortest distance to nodes: ",sourceNode,',', destNode)
+print(shortestPath(node_list[sourceNode-1].getID()-1,node_list[destNode-1].getID()-1,edge_matrix))
 
 # ------------ END OF MAIN PROGRAM -------------------------------------------------------------------------------------------------------------------------------------------------
